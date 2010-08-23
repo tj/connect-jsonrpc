@@ -9,7 +9,7 @@ var connect = require('connect'),
 
 function run(procedures){
     var server = connect.createServer(
-        connect.jsonrpc(procedures)
+        jsonrpc(procedures)
     );
     server.call = function(obj, fn){
         if (typeof obj !== 'string') obj = JSON.stringify(obj);

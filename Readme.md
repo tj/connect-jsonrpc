@@ -19,7 +19,7 @@ The _jsonrpc_ middleware provides JSON-RPC 2.0 support. Below is an example expo
 	  };
     
 	  connect.createServer(
-	      connect.jsonrpc(math, date)
+	      require('connect-jsonrpc')(math, date)
 	  );
     
 When you wish to pass an exception simply invoke `fn(err)`, or pass the error code `fn(jsonrpc.INVALID_PARAMS)`. Otherwise `fn(null, result)` will respond with the given results.
