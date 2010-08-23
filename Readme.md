@@ -24,6 +24,16 @@ The _jsonrpc_ middleware provides JSON-RPC 2.0 support. Below is an example expo
     
 When you wish to pass an exception simply invoke `fn(err)`, or pass the error code `fn(jsonrpc.INVALID_PARAMS)`. Otherwise `fn(null, result)` will respond with the given results.
 
+## Example Requests
+
+Regular params:
+
+    $ curl -H "Content-Type: application/json" -d '{ "jsonrpc": "2.0", "method": "add", "params": [1,2], "id":2 }' http://localhost:3000
+
+Named params:
+
+    $ curl -H "Content-Type: application/json" -d '{ "jsonrpc": "2.0", "method": "add", "params": { "b": 1, "a": 2 }, "id":2 }' http://localhost:3000
+
 ## License 
 
 (The MIT License)
