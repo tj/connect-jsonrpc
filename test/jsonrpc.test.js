@@ -8,22 +8,19 @@ var connect = require('connect'),
     jsonrpc = require('connect-jsonrpc');
 
 function run(procedures){
-    var server = helpers.run(
+    var server = connect.createServer(
         connect.jsonrpc(procedures)
     );
     server.call = function(obj, fn){
-        var req = server.request('POST', '/', { 'Content-Type': 'application/json; charset=foobar' });
-        req.buffer = true;
-        req.addListener('response', function(res){
-            res.addListener('end', function(){
-                fn(res, JSON.parse(res.body));
-            });
+        if (typeof obj !== 'string') obj = JSON.stringify(obj);
+        assert.response(server, {
+            url: '/',
+            method: 'POST',
+            data: obj,
+            headers: { 'Content-Type': 'application/json' }
+        }, function(res){
+            fn(res, JSON.parse(res.body));
         });
-        if (typeof obj === 'object') {
-            obj = JSON.stringify(obj);
-        }
-        req.write(obj);
-        req.end();
     };
     return server;
 }
