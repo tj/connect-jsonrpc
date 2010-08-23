@@ -1,6 +1,12 @@
 
 # Connect JSON-RPC
 
+## Installation
+
+    $ npm install connect-jsonrpc
+
+## Examples
+
 The _jsonrpc_ middleware provides JSON-RPC 2.0 support. Below is an example exposing the _add_ and _sub_ methods:
 
 	  var math = {
