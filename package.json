@@ -1,0 +1,9 @@
+{
+  "name": "connect-jsonrpc",
+  "description": "JSON-RPC 2 middleware for connect",
+  "version": "0.0.1",
+  "main": "./lib/connect-jsonrpc.js",
+  "contributors": [ 
+    { "name": "TJ Holowaychuk", "email": "tj@vision-media.ca" }
+  ]
+}
